@@ -1,7 +1,7 @@
 {
   "name": "tgcontest-js",
-  "version": "1.0.0",
-  "description": "Web messanger for tg contest",
+  "version": "0.1.0",
+  "description": "Web messenger for tg contest",
   "main": "index.html",
   "author": "Sect0R",
   "license": "MIT",
@@ -24,6 +24,8 @@
     "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.9.0"
+    "webpack-dev-server": "^3.9.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "dotenv": "^8.2.0"
   }
 }

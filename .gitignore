@@ -2,7 +2,9 @@
 
 # compiled output
 /dist/css
-/dist/*.*
+/dist/*.html
+/dist/*.json
+/dist/*.js
 
 # Runtime data
 pids

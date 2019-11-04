@@ -1,5 +1,4 @@
-import alr from './helpers/showalert';
+import {Config} from "./config";
+import {TgClient} from "./libs/client.class";
 
-setTimeout(() => {
-    alr.show('test');
-}, 1000);
+document.write(Config.app.hash);
