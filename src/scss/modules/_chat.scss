@@ -1,0 +1,26 @@
+.chat {
+  background-color: $chat-bg;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.message {
+  &-container {
+    max-width: 700px;
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+  &-list {
+    /* todo: custom cross-browser scroll https://www.npmjs.com/package/simplebar*/
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  &-input {
+    /* todo: max-height 14 rows */
+    width: 100%;
+    border: 1px solid red;
+    max-height: calc(14 * 1em);
+    overflow-y: auto;
+  }
+}
