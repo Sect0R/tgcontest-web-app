@@ -1,0 +1,50 @@
+body {
+  overflow: hidden;
+}
+
+.backdrop {
+  background-color: #0000004d;// rgba(0, 0, 0, 0.3)
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  //z-index: $zindex-modal-backdrop;
+}
+
+.modal {
+  //display: flex;
+  //flex-direction: column;
+  position: relative;
+  padding: 20px;
+  background-color: $color-light;
+  border-radius: 10px;
+  width: 240px;
+  //z-index: $zindex-modal;
+  &__header {
+    display: flex;
+    align-items: center;
+    /**/
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  &__body {
+    margin: 10px 0;
+  }
+  &__footer {
+    text-transform: uppercase;
+    text-align: right;
+    font-weight: bold;
+    margin-top: 2rem;
+    & > a {
+      display: block;
+      margin: 1.2rem 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
