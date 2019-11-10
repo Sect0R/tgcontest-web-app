@@ -24,8 +24,18 @@
             <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
         </aside>
         <main class="main">
-            <div>
-                <div onclick="document.querySelector('.js-sidebar-toggle').classList.toggle('open')">toggle sidebar</div>
+            <!--todo: check pixel-perfect height and icon position-->
+            <div style="display: flex;align-items:center; justify-content: space-between; padding: 8px 19px;">
+                <div>
+                    <img src="https://via.placeholder.com/45" alt="Chat with Karen. " class="mr-10" style="vertical-align:top;">
+                    <div style="display: inline-block; line-height: 1.4em;">
+                        <div class="text-bold" style="font-size: 15px">Karen Stanford</div>
+                        <div class="color-primary" style="font-size: 14px">online</div>
+                    </div>
+                </div>
+                <div>
+                    <div onclick="document.querySelector('.js-sidebar-toggle').classList.toggle('open')" class="icon icon-more">&vellip;</div>
+                </div>
             </div>
             <div class="chat">
                 <article class="message-list">
