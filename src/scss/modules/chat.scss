@@ -11,10 +11,35 @@
     padding: 0 15px;
     margin: 0 auto;
   }
+  &-row {
+    margin: 10px 0;
+  }
   &-list {
     /* todo: custom cross-browser scroll https://www.npmjs.com/package/simplebar*/
     flex-grow: 1;
     overflow-y: auto;
+    &__item {
+      display: inline-block;
+      padding: 5px 8px;
+      /* todo: replace by box-shadow */
+      filter: drop-shadow(0px 1px 1px rgba(16,35,47,0.15));
+      background-color: #eeffde;
+      border-radius: 10px;
+      border-bottom-left-radius: 0;
+      position: relative;
+      &::before {
+        content: '';
+        display: inline;
+        position: absolute;
+        left: -6px;
+        bottom: 0;
+        border-width: 6px 3px;
+        border-style: solid;
+        border-color: transparent #eeffde #eeffde transparent;
+      }
+      &_gray {}
+      &_green {}
+    }
   }
   &-input {
     /* todo: max-height 14 rows */
