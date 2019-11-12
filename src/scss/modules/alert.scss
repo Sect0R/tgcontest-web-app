@@ -1,0 +1,9 @@
+.alert {
+  border-radius: $border-radius;
+  padding: 8px;/* todo: 8px / 9px (with / without) image border ??*/
+  display: flex;
+  align-items: center;
+  &_warning {
+    background-color: $color-warning;
+  }
+}

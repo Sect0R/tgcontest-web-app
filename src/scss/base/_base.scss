@@ -20,6 +20,9 @@ html {
     margin-right: 15px;
   }
 }
+.w-100 {
+  width: 100%;
+}
 .text {
   &-bold {
     font-weight: bold;
@@ -51,7 +54,6 @@ html {
 .sidebar {
   background: $color-light;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-basis: 25%;
   /* todo: not empty sidebar toggling bug fix */
