@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="backdrop">
+        <!--<div class="backdrop">
             <div class="modal">
                 <div class="modal__header">
                     <img src="https://via.placeholder.com/30" alt="Chat with Karen. " class="mr-15">Delete Chat?
@@ -19,9 +19,44 @@
                     <a href="#" class="color-primary">CANCEL</a>
                 </div>
             </div>
-        </div>
-        <aside class="sidebar">
-            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>-->
+        <aside class="sidebar" style="padding-top: 40px">
+            <!--<div class="lds-ring"><div></div><div></div><div></div><div></div></div>-->
+            <!-- todo: w-100 and .aside justify-content conflict-->
+            <ul class="w-100">
+                <li style="padding: 2px 8px"><!--order here-->
+                    <div class="alert alert_warning">
+                        <div class="lds-ring lds-ring_dark lds-ring_small" style="margin: 7px;"><div></div><div></div><div></div><div></div></div>
+                        <div class="text-bold" style="margin-left: 23px;">Waiting for network...</div>
+                    </div>
+                </li>
+                <li style="padding: 2px 8px"><!--order here-->
+                    <div class="list__link active">
+                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 8px" alt="Chat with ">
+                        <div style="display: inline-block; line-height: 1.4em; vertical-align: middle;">
+                            <div class="text-bold" style="font-size: 12px; color: #101010;">Karen Stanford</div>
+                            <div class="color-primary" style="font-size: 12px; color: #7b7f83;">Seville</div>
+                        </div>
+                        <div style="float: right">
+                            <div style="font-size: 9px;color: #7b7f83;">13:11</div>
+                            <div style="font-size: 10px;" class="badge badge_success">2</div>
+                        </div>
+                    </div>
+                </li>
+                <li style="padding: 2px 8px"><!--order here-->
+                    <div class="list__link">
+                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 8px" alt="Chat with ">
+                        <div style="display: inline-block; line-height: 1.4em; vertical-align: middle;">
+                            <div class="text-bold" style="font-size: 12px; color: #101010;">Karen Stanford</div>
+                            <div class="color-primary" style="font-size: 12px; color: #7b7f83;">Seville</div>
+                        </div>
+                        <div style="float: right">
+                            <div style="font-size: 9px;color: #7b7f83;">13:11</div>
+                            <div style="font-size: 10px;" class="badge">2</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </aside>
         <main class="main">
             <!--todo: check pixel-perfect height and icon position-->

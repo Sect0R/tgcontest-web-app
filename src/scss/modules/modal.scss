@@ -1,8 +1,9 @@
 body {
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .backdrop {
+
   background-color: #0000004d;// rgba(0, 0, 0, 0.3)
   display: flex;
   align-items: center;
@@ -13,6 +14,7 @@ body {
   right: 0;
   bottom: 0;
   //z-index: $zindex-modal-backdrop;
+  display: none;
 }
 
 .modal {
@@ -21,7 +23,7 @@ body {
   position: relative;
   padding: 20px;
   background-color: $color-light;
-  border-radius: 10px;
+  border-radius: $border-radius;
   width: 240px;
   //z-index: $zindex-modal;
   &__header {

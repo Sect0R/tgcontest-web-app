@@ -1,0 +1,19 @@
+.badge {
+  background-color: #c4c9cc;
+  /* todo: need to check the border-radius by pixel-perfect*/
+  border-radius: 50%;
+  //border-radius: 11px;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  height: 24px;
+  min-width: 24px;
+  line-height: 1;
+  padding: 8px;
+  text-align: center;
+
+  &_success {
+    background-color: #4dcd5e;
+  }
+}
