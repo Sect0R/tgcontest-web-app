@@ -25,7 +25,6 @@ builder.register('$q', $qModule);
 // Register other modules
 builder.register('CryptoWorker', CryptoWorkerModule);
 builder.register('IdleManager', IdleManagerModule);
-builder.register('qSync', qSyncModule);
 builder.register('Storage', StorageModule);
 builder.register('TelegramMeWebService', TelegramMeWebServiceModule);
 builder.register('FileSaver', FileSaverModule);
