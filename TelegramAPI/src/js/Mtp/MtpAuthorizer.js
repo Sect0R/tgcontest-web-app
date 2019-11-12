@@ -1,4 +1,4 @@
-function MtpAuthorizerModule(MtpTimeManager, MtpDcConfigurator, MtpRsaKeysManager, CryptoWorker, MtpSecureRandom, $q, $timeout, $http) {
+function MtpAuthorizerModule(MtpTimeManager, MtpDcConfigurator, MtpRsaKeysManager, CryptoWorker, MtpSecureRandom, $q, $http) {
     var chromeMatches = navigator.userAgent.match(/Chrome\/(\d+(\.\d+)?)/),
         chromeVersion = chromeMatches && parseFloat(chromeMatches[1]) || false,
         xhrSendBuffer = !('ArrayBufferView' in window) && (!chromeVersion || chromeVersion < 30);
@@ -107,7 +107,7 @@ function MtpAuthorizerModule(MtpTimeManager, MtpDcConfigurator, MtpRsaKeysManage
             deferred.reject(error);
         });
 
-        $timeout(function () {
+        setTimeout(function () {
             MtpRsaKeysManager.prepare();
         });
     }
@@ -350,7 +350,7 @@ function MtpAuthorizerModule(MtpTimeManager, MtpDcConfigurator, MtpRsaKeysManage
             deferred: $q.defer()
         };
 
-        $timeout(function () {
+        setTimeout(function () {
             mtpSendReqPQ(auth);
         });
 
@@ -375,6 +375,5 @@ MtpAuthorizerModule.dependencies = [
     'CryptoWorker', 
     'MtpSecureRandom', 
     '$q', 
-    '$timeout', 
     '$http'
 ];
