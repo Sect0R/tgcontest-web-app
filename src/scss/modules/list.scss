@@ -1,8 +1,24 @@
 .list {
+  display: flex;
+  flex-direction: column;
+  &__item {
+    padding: 2px 8px;
+    &_separator {
+      padding: 0;
+      margin: 6px 0;
+      border-top: 1px solid $border-color;
+    }
+    &_system {
+      order: -2;
+    }
+    &_pinned {
+      order: -1;
+    }
+  }
   &__link {
     border-radius: $border-radius;
     cursor: pointer;
-    padding: 8px;/* todo: 8px / 9px (with / without) image border ??*/
+    padding: 9px;/* todo: 8px / 9px (with / without) image border ??*/
     //display: flex;
     //align-items: center;
     &.active,

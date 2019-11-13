@@ -1,5 +1,5 @@
 $container: 1680px;
-$borderColor: #dadce0;
+$border-color: #dadce0;
 $border-radius: 10px;
 $color-primary: #3390ec;
 $color-light: #fff;
@@ -10,6 +10,9 @@ $color-danger: #df3f40;
 /* chat */
 $chat-bg: #e6ebee;
 /* spinner */
-$spinnerColor: #4ea4f6;
-$spinnerSize: 52px;
-$spinnerWeight: 4px;
+$spinner-color-primary: #4ea4f6;
+$spinner-color-dark: #000;
+$spinner-size: 52px;
+$spinner-size-small: 26px;
+$spinner-weight-bold: 4px;
+$spinner-weight: 4px;

@@ -20,39 +20,101 @@
                 </div>
             </div>
         </div>-->
-        <aside class="sidebar" style="padding-top: 40px">
-            <!--<div class="lds-ring"><div></div><div></div><div></div><div></div></div>-->
+        <aside class="sidebar" style="padding-top: 42px">
+<!--            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>-->
             <!-- todo: w-100 and .aside justify-content conflict-->
-            <ul class="w-100">
-                <li style="padding: 2px 8px"><!--order here-->
+
+            <!--todo: online indicator / check mark / pinned icon-->
+            <ul class="list w-100">
+                <li class="list__item list__item_system"><!--order here-->
                     <div class="alert alert_warning">
-                        <div class="lds-ring lds-ring_dark lds-ring_small" style="margin: 7px;"><div></div><div></div><div></div><div></div></div>
-                        <div class="text-bold" style="margin-left: 23px;">Waiting for network...</div>
+                        <div class="lds-ring lds-ring_dark lds-ring_small" style="margin: 7px 30px 7px 7px;"><div></div><div></div><div></div><div></div></div>
+                        <div class="text-bold">Waiting for network...</div>
                     </div>
                 </li>
-                <li style="padding: 2px 8px"><!--order here-->
-                    <div class="list__link active">
-                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 8px" alt="Chat with ">
-                        <div style="display: inline-block; line-height: 1.4em; vertical-align: middle;">
-                            <div class="text-bold" style="font-size: 12px; color: #101010;">Karen Stanford</div>
-                            <div class="color-primary" style="font-size: 12px; color: #7b7f83;">Seville</div>
-                        </div>
-                        <div style="float: right">
-                            <div style="font-size: 9px;color: #7b7f83;">13:11</div>
-                            <div style="font-size: 10px;" class="badge badge_success">2</div>
-                        </div>
-                    </div>
-                </li>
-                <li style="padding: 2px 8px"><!--order here-->
+                <li class="list__item list__item_pinned"><!--order here-->
                     <div class="list__link">
-                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 8px" alt="Chat with ">
-                        <div style="display: inline-block; line-height: 1.4em; vertical-align: middle;">
-                            <div class="text-bold" style="font-size: 12px; color: #101010;">Karen Stanford</div>
-                            <div class="color-primary" style="font-size: 12px; color: #7b7f83;">Seville</div>
+                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 5px;" alt="Chat with ">
+                        <div style="display: inline-block; ; vertical-align: middle;">
+                            <div class="text-bold" style="color: #101010;">Saved Messages</div>
+                            <!-- todo: font-weight is need to check-->
+                            <div class="color-primary" style="color: #7b7f83;">Eat something!</div>
                         </div>
                         <div style="float: right">
-                            <div style="font-size: 9px;color: #7b7f83;">13:11</div>
-                            <div style="font-size: 10px;" class="badge">2</div>
+                            <div style="font-size: 12px;color: #7b7f83;margin: 3px;">19:25</div>
+                            <div class="badge badge_success">-</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list__item list__item_pinned"><!--order here-->
+                    <div class="list__link">
+                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 5px;" alt="Chat with ">
+                        <div style="display: inline-block; ; vertical-align: middle;">
+                            <div class="text-bold" style="color: #101010;">Alicia Torreaux</div>
+                            <!-- todo: font-weight is need to check-->
+                            <div class="color-primary" style="color: #7b7f83;">Bob says hi.</div>
+                        </div>
+                        <div style="float: right">
+                            <div style="font-size: 12px;color: #7b7f83;margin: 3px;">13:02</div>
+                            <div class="badge badge_success">2</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list__item list__item_separator"></li>
+                <li class="list__item"><!--order here-->
+                    <div class="list__link">
+                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 5px;" alt="Chat with ">
+                        <div style="display: inline-block; ; vertical-align: middle;">
+                            <div class="text-bold" style="color: #101010;">Roberto</div>
+                            <!-- todo: font-weight is need to check-->
+                            <div class="color-primary" style="color: #7b7f83;">Say hello to Alice</div>
+                        </div>
+                        <div style="float: right">
+                            <div style="font-size: 12px;color: #7b7f83;margin: 3px;">21:48</div>
+                            <div class="badge badge_success">1</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list__item"><!--order here-->
+                    <div class="list__link">
+                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 5px;" alt="Chat with ">
+                        <div style="display: inline-block; ; vertical-align: middle;">
+                            <div class="text-bold" style="color: #101010;">Campus Party</div>
+                            <!-- todo: font-weight is need to check-->
+                            <div class="color-primary" style="color: #7b7f83;">
+                                <span style="color: #101010;">Denny:</span> Wow, almost 2,500 members!
+                            </div>
+                        </div>
+                        <div style="float: right">
+                            <div style="font-size: 12px;color: #7b7f83;margin: 3px;">16:38</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list__item active"><!--order here-->
+                    <div class="list__link">
+                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 5px;" alt="Chat with ">
+                        <div style="display: inline-block; ; vertical-align: middle;">
+                            <div class="text-bold" style="color: #101010;">Karen Stanford</div>
+                            <!-- todo: font-weight is need to check-->
+                            <div class="color-primary" style="color: #7b7f83;">Seville</div>
+                        </div>
+                        <div style="float: right">
+                            <div style="font-size: 12px;color: #7b7f83;margin: 3px;">16:11</div>
+                            <div class="badge badge_success"></div>
+                        </div>
+                    </div>
+                </li>
+                <li style="padding: 2px 8px;"><!--order here-->
+                    <div class="list__link">
+                        <img src="https://via.placeholder.com/160" style="width: 54px;height: 54px; overflow: hidden;border-radius: 50%;vertical-align:middle;margin-right: 5px;" alt="Chat with ">
+                        <div style="display: inline-block; ; vertical-align: middle;">
+                            <div class="text-bold" style="color: #101010;">Cat Videos</div>
+                            <!-- todo: font-weight is need to check-->
+                            <div class="color-primary" style="color: #7b7f83;">Video</div>
+                        </div>
+                        <div style="float: right">
+                            <div style="font-size: 12px;color: #7b7f83;margin: 3px;">14:50</div>
+                            <div class="badge">27</div>
                         </div>
                     </div>
                 </li>

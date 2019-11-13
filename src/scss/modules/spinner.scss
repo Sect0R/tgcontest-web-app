@@ -2,19 +2,20 @@
   align-self: center;
   display: inline-block;
   position: relative;
-  width: $spinnerSize;
-  height: $spinnerSize;
+  width: $spinner-size;
+  height: $spinner-size;
   div {
     box-sizing: border-box;
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-    //margin: $spinnerWeight;
-    border: $spinnerWeight solid $spinnerColor;
+    //margin: $spinner-weight-bold;
+    border-width: $spinner-weight-bold;
+    border-style: solid;
+    border-color: $spinner-color-primary transparent transparent transparent;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: $spinnerColor transparent transparent transparent;
     &:nth-child(1) {
       animation-delay: -0.45s;
     }
@@ -26,11 +27,17 @@
     }
   }
   &_dark {
-    $spinnerColor: #000;
+    div {
+      border-top-color: $spinner-color-dark;
+    }
   }
   &_small {
-    $spinnerSize: 26px;
-    $spinnerWeight: 1px;
+    width: $spinner-size-small;
+    height: $spinner-size-small;
+    div {
+      $spinner-weight-bold: 1px;
+      border-width: $spinner-weight-bold;
+    }
   }
 }
 @keyframes lds-ring {

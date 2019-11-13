@@ -1,6 +1,10 @@
 html {
   font-size: 16px;
-  font-family: Helvetica; //Tahoma, sans-serif, Arial
+  //font-family: Helvetica; //Tahoma, sans-serif, Arial
+  //font-family: 'rmono';
+  font-family: 'rmedium';
+  font-family: 'RobotoMono-Regular';
+
   line-height: 1.5rem;
 }
 .color {
@@ -77,6 +81,6 @@ html {
 .main {
   /* todo: double border if right sidebar is hidden */
   box-sizing: border-box;
-  border-left: 1px solid $borderColor;
-  border-right: 1px solid $borderColor;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
 }
