@@ -20,15 +20,11 @@ builder.register('MtpTimeManager', MtpTimeManagerModule);
 
 // Register Angular modules
 builder.register('$http', $httpModule);
-builder.register('$interval', $intervalModule);
 builder.register('$q', $qModule);
-builder.register('$rootScope', $rootScopeModule);
-builder.register('$timeout', $timeoutModule);
 
 // Register other modules
 builder.register('CryptoWorker', CryptoWorkerModule);
 builder.register('IdleManager', IdleManagerModule);
-builder.register('qSync', qSyncModule);
 builder.register('Storage', StorageModule);
 builder.register('TelegramMeWebService', TelegramMeWebServiceModule);
 builder.register('FileSaver', FileSaverModule);

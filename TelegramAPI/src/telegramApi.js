@@ -1,4 +1,4 @@
-function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, AppUsersManager, AppProfileManager, AppChatsManager, MtpNetworkerFactory, FileSaver, $q, $timeout) {
+function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, AppUsersManager, AppProfileManager, AppChatsManager, MtpNetworkerFactory, FileSaver, $q) {
     var options = {dcID: 2, createNetworker: true};
 
     MtpNetworkerFactory.setUpdatesProcessor(function(message) {
@@ -486,7 +486,7 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
             }
         }
 
-        $timeout(download);
+        setTimeout(download);
 
         return done.promise;
     }
@@ -613,7 +613,7 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
             }
         }
 
-        $timeout(download);
+        setTimeout(download);
 
         return done.promise;
     }
@@ -794,5 +794,4 @@ TelegramApiModule.dependencies = [
     'MtpNetworkerFactory',
     'FileSaver',
     '$q',
-    '$timeout'
 ];

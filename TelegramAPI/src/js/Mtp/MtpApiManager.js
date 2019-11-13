@@ -1,4 +1,4 @@
-function MtpApiManagerModule(MtpSingleInstanceService, MtpNetworkerFactory, MtpAuthorizer, Storage, TelegramMeWebService, qSync, $q) {
+function MtpApiManagerModule(MtpSingleInstanceService, MtpNetworkerFactory, MtpAuthorizer, Storage, TelegramMeWebService, $q) {
     var cachedNetworkers = {},
         cachedUploadNetworkers = {},
         cachedExportPromise = {},
@@ -69,7 +69,7 @@ function MtpApiManagerModule(MtpSingleInstanceService, MtpNetworkerFactory, MtpA
         }
 
         if (cache[dcID] !== undefined) {
-            return qSync.when(cache[dcID]);
+            return Promise.resolve(cache[dcID]);
         }
 
         var akk = 'dc' + dcID + '_auth_key',
@@ -267,6 +267,5 @@ MtpApiManagerModule.dependencies = [
     'MtpAuthorizer', 
     'Storage', 
     'TelegramMeWebService', 
-    'qSync', 
     '$q'
 ];

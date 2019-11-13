@@ -1,4 +1,4 @@
-function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, CryptoWorker, MtpDcConfigurator, $timeout, $interval, $q, $http) {
+function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, CryptoWorker, MtpDcConfigurator, $q, $http) {
     var updatesProcessor,
         akStopped = false,
         chromeMatches = navigator.userAgent.match(/Chrome\/(\d+(\.\d+)?)/),
@@ -42,7 +42,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
         this.pendingResends = [];
         this.connectionInited = false;
 
-        $interval(this.checkLongPoll.bind(this), 10000);
+        setInterval(this.checkLongPoll.bind(this), 10000);
 
         this.checkLongPoll();
     }
@@ -275,13 +275,12 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
         sha1dText.set(authKey.subarray(x + 96, x + 128), 16);
         promises.sha1d = CryptoWorker.sha1Hash(sha1dText);
 
-        return $q.all(promises).then(function (result) {
+        return Promise.all(Object.values(promises)).then((results) => {
+
             var aesKey = new Uint8Array(32),
-                aesIv = new Uint8Array(32),
-                sha1a = new Uint8Array(result.sha1a),
-                sha1b = new Uint8Array(result.sha1b),
-                sha1c = new Uint8Array(result.sha1c),
-                sha1d = new Uint8Array(result.sha1d);
+                aesIv = new Uint8Array(32);
+
+            [sha1a, sha1b, sha1c, sha1d] = results.map((item) => { return new Uint8Array(item)});
 
             aesKey.set(sha1a.subarray(0, 8));
             aesKey.set(sha1b.subarray(8, 20), 8);
@@ -292,13 +291,13 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
             aesIv.set(sha1c.subarray(16, 20), 20);
             aesIv.set(sha1d.subarray(0, 8), 24);
 
-            return [aesKey, aesIv];
+            return Promise.resolve([aesKey, aesIv]);
         });
     };
 
     MtpNetworker.prototype.checkConnection = function (event) {
         console.log(dT(), 'Check connection', event);
-        $timeout.cancel(this.checkConnectionPromise);
+        clearTimeout(this.checkConnectionPromise);
 
         var serializer = new TLSerialization({mtproto: true}),
             pingID = [nextRandomInt(0xFFFFFFFF), nextRandomInt(0xFFFFFFFF)];
@@ -316,7 +315,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
             self.toggleOffline(false);
         }, function () {
             console.log(dT(), 'Delay ', self.checkConnectionPeriod * 1000);
-            self.checkConnectionPromise = $timeout(self.checkConnection.bind(self), parseInt(self.checkConnectionPeriod * 1000));
+            self.checkConnectionPromise = setTimeout(self.checkConnection.bind(self), parseInt(self.checkConnectionPeriod * 1000));
             self.checkConnectionPeriod = Math.min(60, self.checkConnectionPeriod * 1.5);
         })
     };
@@ -330,14 +329,14 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
         this.offline = enabled;
 
         if (this.offline) {
-            $timeout.cancel(this.nextReqPromise);
+            clearTimeout(this.nextReqPromise);
             delete this.nextReq;
 
             if (this.checkConnectionPeriod < 1.5) {
                 this.checkConnectionPeriod = 0;
             }
 
-            this.checkConnectionPromise = $timeout(this.checkConnection.bind(this), parseInt(this.checkConnectionPeriod * 1000));
+            this.checkConnectionPromise = setTimeout(this.checkConnection.bind(this), parseInt(this.checkConnectionPeriod * 1000));
             this.checkConnectionPeriod = Math.min(30, (1 + this.checkConnectionPeriod) * 1.5);
 
             this.onOnlineCb = this.checkConnection.bind(this);
@@ -351,7 +350,8 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
             if (this.onOnlineCb) {
                 $(document.body).off('online focus', this.onOnlineCb);
             }
-            $timeout.cancel(this.checkConnectionPromise);
+
+            clearTimeout(this.checkConnectionPromise);
         }
 
     };
@@ -748,9 +748,9 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
         // console.log(dT(), 'shedule req', delay);
         // console.trace();
 
-        $timeout.cancel(this.nextReqPromise);
+        clearTimeout(this.nextReqPromise);
         if (delay > 0) {
-            this.nextReqPromise = $timeout(this.performSheduledRequest.bind(this), delay || 0);
+            this.nextReqPromise = setTimeout(this.performSheduledRequest.bind(this), delay || 0);
         } else {
             setZeroTimeout(this.performSheduledRequest.bind(this))
         }
@@ -1002,8 +1002,6 @@ MtpNetworkerFactoryModule.dependencies = [
     'Storage',
     'CryptoWorker',
     'MtpDcConfigurator',
-    '$timeout',
-    '$interval',
     '$q',
     '$http'
 ];

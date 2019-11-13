@@ -1,5 +1,5 @@
-function IdleManagerModule($rootScope, $timeout) {
-    $rootScope.idle = {isIDLE: false};
+function IdleManagerModule() {
+    window.idle = {isIDLE: false};
 
     var toPromise, started = false;
     var hidden = 'hidden';
@@ -44,7 +44,6 @@ function IdleManagerModule($rootScope, $timeout) {
                 return;
             }
 
-
             window.removeEventListener('mousemove', onEvent);
         }
 
@@ -53,10 +52,10 @@ function IdleManagerModule($rootScope, $timeout) {
             isIDLE = true;
         }
 
-        $timeout.cancel(toPromise);
+        clearTimeout(toPromise);
         if (!isIDLE) {
             // console.log('update timeout');
-            toPromise = $timeout(function () {
+            toPromise = setTimeout(function () {
                 onEvent({type: 'timeout'});
             }, 30000);
         }
@@ -66,8 +65,3 @@ function IdleManagerModule($rootScope, $timeout) {
         }
     }
 }
-
-IdleManagerModule.dependencies = [
-    '$rootScope', 
-    '$timeout',
-];
