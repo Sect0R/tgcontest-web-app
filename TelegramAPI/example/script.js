@@ -39,7 +39,9 @@ angular.module('myApp', [])
                 auth: false,
                 info: false
             },
-            auth: {},
+            auth: {
+                phone: '375293444008'
+            },
             info: {},
             logs: [],
             success: [],
@@ -70,6 +72,10 @@ angular.module('myApp', [])
                 });
             }
         });
+
+        $scope.callMethod = function (method) {
+            $scope.invokeMethod(method);
+        }
 
         /* Auth methods */
         $scope.auth.sendCode = function () {

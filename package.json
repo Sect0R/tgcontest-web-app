@@ -26,6 +26,8 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0",
     "clean-webpack-plugin": "^3.0.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "crypto-js": "^3.1.9-1"
+//    "jsbn": "^1.1.0"
   }
 }

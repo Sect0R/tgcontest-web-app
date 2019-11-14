@@ -74,7 +74,7 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li ng-repeat="method in methods"><a href="javascript:;" ng-bind="method"></a></li>
+                    <li ng-repeat="method in methods"><a href="javascript:;" ng-bind="method" ng-click="callMethod(method)"></a></li>
                 </ul>
             </div>
 
