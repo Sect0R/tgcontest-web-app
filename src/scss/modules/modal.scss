@@ -16,7 +16,7 @@ body {
   //z-index: $zindex-modal-backdrop;
   display: none;
 }
-
+/* todo: need to add box-shadow from sketch*/
 .modal {
   //display: flex;
   //flex-direction: column;
@@ -48,5 +48,9 @@ body {
         margin-bottom: 0;
       }
     }
+  }
+  &_dropdown {
+    position: absolute;
+    //z-index: $zindex-dropdown;
   }
 }

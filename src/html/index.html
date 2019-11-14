@@ -20,10 +20,33 @@
                 </div>
             </div>
         </div>-->
-        <aside class="sidebar" style="padding-top: 42px">
-<!--            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>-->
-            <!-- todo: w-100 and .aside justify-content conflict-->
+        <aside class="sidebar"><!--style="padding-top: 42px"-->
 
+<!--            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>-->
+
+            <div class="w-100" style="padding: 5px 12px;box-sizing: border-box;display: flex;align-items: center;">
+                <div style="display: inline-block;">
+                    <!-- todo: ?? need to margin-top: -1px for pixel perfect-->
+                    <div onclick="document.querySelector('.js-menu-toggle').classList.toggle('open')" class="icon svg-icon svg-icon_menu" style="margin-top: -1px;"></div>
+                    <div class="modal modal_dropdown js-menu-toggle">
+                        <div class="modal__header">
+                            <img src="https://via.placeholder.com/30" alt="Chat with Karen. " class="mr-15">Delete Chat?
+                        </div>
+                        <div class="modal__body">
+                            <div>Are you sure you want to delete chat with <strong>Karen?</strong></div>
+                        </div>
+                        <div class="modal__footer">
+                            <a href="#" class="color-danger">DELETE FOR ME AND KAREN</a>
+                            <a href="#" class="color-danger">DELETE JUST FOR ME</a>
+                            <a href="#" class="color-primary">CANCEL</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- todo: border-radius = 2*$border-radius/ border-radius =  11 || 12 ?? -->
+                <!-- todo: 1px diff =( separator, warning / text / 2checks-->
+                <input type="search" placeholder="Search" style="display: block;width: 100%;margin: 3px 8px 3px 14px;padding: 12px 16px 13px 42px; border-radius: 22px;color:#8d969c;background: #f4f4f5 url('/img/icons/search_svg.svg') 12px center no-repeat;border: 1px solid #f4f4f5;font-size: 15px;">
+            </div>
+            <!-- todo: w-100 and .aside justify-content conflict-->
             <!--todo: online indicator / check mark / pinned icon-->
             <ul class="list w-100">
                 <li class="list__item list__item_system"><!--order here-->
@@ -41,8 +64,22 @@
                             <div class="color-primary" style="color: #7b7f83;">Eat something!</div>
                         </div>
                         <div style="float: right">
-                            <div style="font-size: 12px;color: #7b7f83;margin: 3px;">19:25</div>
-                            <div class="badge badge_success">-</div>
+                            <div style="margin: 3px;">
+                                <!-- todo: icons crash pinned icon pixel perfect-->
+                                <picture>
+                                    <source type="image/png" srcset="/img/icons/1check_1x.png 1x, /img/icons/1check_2x.png 2x, /img/icons/1check_3x.png 3x">
+                                    <img src="/img/icons/1check_svg.svg" alt="" class="custom-icon">
+                                </picture>
+                                <picture>
+                                    <source type="image/png" srcset="/img/icons/2checks_1x.png 1x, /img/icons/2checks_2x.png 2x, /img/icons/2checks_3x.png 3x">
+                                    <!-- todo: bug: svg icon need to be green if massage was written -->
+                                    <img src="/img/icons/2checks_svg.svg" alt="" class="custom-icon">
+                                </picture>
+                                <span class="time">19:25</span>
+                            </div>
+                            <!-- todo: trouble with 1x/2x/3x  -->
+                            <!-- todo: change color of the icon  -->
+                            <div class="badge svg-icon svg-icon_pinned"></div>
                         </div>
                     </div>
                 </li>
@@ -163,5 +200,10 @@
             <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
         </aside>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        document.querySelector('body').classList.add(`is_${window.devicePixelRatio}x`);
+      });
+    </script>
 </body>
 </html>

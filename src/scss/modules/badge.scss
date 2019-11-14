@@ -18,11 +18,6 @@
   font-size: 14px;
   line-height: 7px;
   margin-right: 1px;
-
-  /* todo: can be deleted */
-  &:empty {
-    display: none;
-  }
   &_success {
     background-color: #4dcd5e;
   }

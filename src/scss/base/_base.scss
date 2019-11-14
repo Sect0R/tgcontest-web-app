@@ -55,10 +55,12 @@ html {
   max-width: $container;
   margin: auto;
 }
+/* todo: bug: border-box. horizontal padding overflow */
 .sidebar {
   background: $color-light;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex-basis: 25%;
   /* todo: not empty sidebar toggling bug fix */
   overflow: hidden;
@@ -70,6 +72,12 @@ html {
 /* todo: check ie */
 .js-sidebar-toggle.open {
   flex-basis: 25%;
+}
+.js-menu-toggle {
+  display: none;
+  &.open {
+    display: block;
+  }
 }
 .main {
   display: flex;

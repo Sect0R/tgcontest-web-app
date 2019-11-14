@@ -1,0 +1,39 @@
+.svg-icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  &_menu {
+    background-image: url('/img/icons/menu_1x.png');
+  }
+  &_pinned {
+    background-image: url('/img/icons/pinnedchat_1x.png');
+    &.badge {
+      padding: 0;
+    }
+  }
+}
+
+body {
+  //&.is_1x {
+  //
+  //}
+  &.is_2x {
+    .svg-icon {
+      &_menu {
+        background-image: url('/img/icons/menu_2x.png');
+      }
+      &_pinned {
+        background-image: url('/img/icons/pinnedchat_2x.png');
+      }
+    }
+  }
+  &.is_3x {
+    .svg-icon {
+      &_menu {
+        background-image: url('/img/icons/menu_3x.png');
+      }
+      &_pinned {
+        background-image: url('/img/icons/pinnedchat_3x.png');
+      }
+    }
+  }
+}
