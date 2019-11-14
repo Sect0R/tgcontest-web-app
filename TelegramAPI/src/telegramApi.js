@@ -1,14 +1,14 @@
-function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, AppUsersManager, AppProfileManager, AppChatsManager, MtpNetworkerFactory, FileSaver, $q) {
+function TelegramApiModule(MtpApiManager, AppPeersManager, AppUsersManager, AppProfileManager, AppChatsManager, MtpNetworkerFactory, $q) {
     var options = {dcID: 2, createNetworker: true};
-
-    MtpNetworkerFactory.setUpdatesProcessor(function(message) {
-        switch (message._) {
-            case 'updates':
-                AppChatsManager.saveApiChats(message.chats);
-                AppUsersManager.saveApiUsers(message.users);
-                break;
-        }
-    });
+    //
+    // MtpNetworkerFactory.setUpdatesProcessor(function(message) {
+    //     switch (message._) {
+    //         case 'updates':
+    //             AppChatsManager.saveApiChats(message.chats);
+    //             AppUsersManager.saveApiUsers(message.users);
+    //             break;
+    //     }
+    // });
 
     return {
         checkPhone: checkPhone,
@@ -19,10 +19,8 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
         downloadPhoto: downloadPhoto,
         editChannelAdmin: editChannelAdmin,
         editChannelTitle: editChannelTitle,
-        editChannelPhoto: editChannelPhoto,
         editChatAdmin: editChatAdmin,
         editChatTitle: editChatTitle,
-        editChatPhoto: editChatPhoto,
         getChatLink: getChatLink,
         getDialogs: getDialogs,
         getDocumentPreview: getDocumentPreview,
@@ -34,7 +32,6 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
         getUserPhoto: getUserPhoto,
         joinChat: joinChat,
         sendCode: sendCode,
-        sendFile: sendFile,
         sendMessage: sendMessage,
         sendSms: sendSms,
         setConfig: setConfig,
@@ -47,8 +44,6 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
 
         invokeApi: invokeApi,
         dT: dT,
-
-        VERSION: '<%TELEGRAM-API-VERSION%>'
     };
 
     /**
@@ -195,7 +190,7 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
         Config.Server.Production = config.server.production;
 
         MtpApiManager.invokeApi('help.getNearestDc', {}, options).then(function(nearestDcResult) {
-            if (nearestDcResult.nearest_dc != nearestDcResult.this_dc) {
+            if (nearestDcResult.nearest_dc !== nearestDcResult.this_dc) {
                 MtpApiManager.getNetworker(nearestDcResult.nearest_dc, {createNetworker: true});
             }
         });
@@ -376,50 +371,6 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
     }
 
     /**
-     * @function sendFile
-     * @description Send file
-     * @param {Object} params - Parameters
-     * @param {Number} params.id - Peer ID
-     * @param {String} params.type - Chat type (for chat and channel use 'chat' (default))
-     * @param {File} params.file - File
-     * @param {String} [params.caption] - File caption
-     * @example <%example:sendFile.js%>
-     */
-    function sendFile(params) {
-        params = params || {};
-        params.id = params.id || 0;
-        params.type = params.type || 'chat';
-        params.file = params.file || {};
-        params.caption = params.caption || '';
-
-        if (params.type == 'chat' && params.id > 0) {
-            params.id = params.id * -1;
-        }
-
-        return MtpApiFileManager.uploadFile(params.file).then(function(inputFile) {
-            var file = params.file;
-
-            inputFile.name = file.name;
-
-            var inputMedia = {
-                _: 'inputMediaUploadedDocument',
-                file: inputFile,
-                mime_type: file.type,
-                caption: params.caption,
-                attributes: [
-                    {_: 'documentAttributeFilename', file_name: file.name}
-                ]
-            };
-
-            return MtpApiManager.invokeApi('messages.sendMedia', {
-                peer: AppPeersManager.getInputPeerByID(params.id),
-                media: inputMedia,
-                random_id: [nextRandomInt(0xFFFFFFFF), nextRandomInt(0xFFFFFFFF)]
-            });
-        });
-    }
-
-    /**
      * @function downloadDocument
      * @description Download Telegram document
      * @param {Object} doc - Telegram document
@@ -475,9 +426,6 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
                     download();
                 });
             } else {
-                if (autosave) {
-                    FileSaver.save(bytes, fileName);
-                }
                 done.resolve({
                     bytes: bytes,
                     fileName: fileName,
@@ -602,9 +550,6 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
                     download();
                 });
             } else {
-                if (autosave) {
-                    FileSaver.save(bytes, fileName);
-                }
                 done.resolve({
                     bytes: bytes,
                     fileName: fileName,
@@ -713,36 +658,6 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
         });
     }
 
-    function editChatPhoto(chat_id, photo) {
-        return MtpApiFileManager.uploadFile(photo).then(function(inputFile) {
-            return MtpApiManager.invokeApi('messages.editChatPhoto', {
-                chat_id: chat_id,
-                photo: {
-                    _: 'inputChatUploadedPhoto',
-                    file: inputFile,
-                    crop: {
-                        _: 'inputPhotoCropAuto'
-                    }
-                }
-            });
-        });
-    }
-
-    function editChannelPhoto(channel_id, photo) {
-        return MtpApiFileManager.uploadFile(photo).then(function(inputFile) {
-            return MtpApiManager.invokeApi('channels.editPhoto', {
-                channel: AppChatsManager.getChannelInput(channel_id),
-                photo: {
-                    _: 'inputChatUploadedPhoto',
-                    file: inputFile,
-                    crop: {
-                        _: 'inputPhotoCropAuto'
-                    }
-                }
-            });
-        });
-    }
-
     function checkPhone(phone_number) {
         return MtpApiManager.invokeApi('auth.checkPhone', {phone_number: phone_number});
     }
@@ -787,11 +702,9 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, MtpApiFileManager, Ap
 TelegramApiModule.dependencies = [
     'MtpApiManager',
     'AppPeersManager',
-    'MtpApiFileManager',
     'AppUsersManager',
     'AppProfileManager',
     'AppChatsManager',
     'MtpNetworkerFactory',
-    'FileSaver',
     '$q',
 ];

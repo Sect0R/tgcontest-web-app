@@ -8,7 +8,6 @@ builder.register('AppProfileManager', AppProfileManagerModule);
 builder.register('AppUsersManager', AppUsersManagerModule);
 
 // Register Mtp modules
-builder.register('MtpApiFileManager', MtpApiFileManagerModule);
 builder.register('MtpApiManager', MtpApiManagerModule);
 builder.register('MtpAuthorizer', MtpAuthorizerModule);
 builder.register('MtpDcConfigurator', MtpDcConfiguratorModule);
@@ -27,7 +26,6 @@ builder.register('CryptoWorker', CryptoWorkerModule);
 builder.register('IdleManager', IdleManagerModule);
 builder.register('Storage', StorageModule);
 builder.register('TelegramMeWebService', TelegramMeWebServiceModule);
-builder.register('FileSaver', FileSaverModule);
 
 // Register TelegramApi module
 builder.register('TelegramApi', TelegramApiModule);

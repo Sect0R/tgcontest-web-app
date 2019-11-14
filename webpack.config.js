@@ -85,8 +85,10 @@ module.exports = ( env, argv ) => {
             new webpack.DefinePlugin({
                 _APP_ID_: JSON.stringify(process.env.APP_ID),
                 _APP_HASH_: JSON.stringify(process.env.APP_HASH),
-                _APP_SERVER_: isDevelopment ? JSON.stringify(process.env.APP_TEST_SERVER) : JSON.stringify(process.env.APP_PROD_SERVER),
-                _APP_VERSION_: JSON.stringify(require('./package.json').version)
+                _APP_TEST_SERVER_: process.env.APP_TEST_SERVER,
+                _APP_PROD_SERVER_: process.env.APP_PROD_SERVER,
+                _APP_VERSION_: JSON.stringify(require('./package.json').version),
+                _DEBUG_: JSON.stringify(isDevelopment),
             })
         ],
         devServer: {

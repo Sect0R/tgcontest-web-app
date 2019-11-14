@@ -23,7 +23,6 @@ gulp.task('js', function () {
         'src/IoC.js'
     ])
         .pipe($.concat('telegramApi.js'))
-        .pipe($.replace(/<%TELEGRAM-API-VERSION%>/g, version))
         .pipe($.wrapper({
             header:  '(function(){\n',
             footer: '\n})();'

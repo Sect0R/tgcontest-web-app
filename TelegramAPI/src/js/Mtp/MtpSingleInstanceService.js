@@ -6,7 +6,7 @@ function MtpSingleInstanceServiceModule(IdleManager, Storage, MtpNetworkerFactor
     var deactivated = false;
 
     function start() {
-        if (!started && !Config.Navigator.mobile) {
+        if (!started) {
             started = true;
 
             IdleManager.start();

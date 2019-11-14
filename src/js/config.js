@@ -3,16 +3,10 @@ export const Config = {
         id: _APP_ID_,
         hash: _APP_HASH_,
         version: _APP_VERSION_,
-        server: _APP_SERVER_,
+        server: {
+            test: _APP_TEST_SERVER_,
+            production: _APP_PROD_SERVER_,
+        },
     },
-    modes: {
-        debug: location.search.indexOf('debug=1') > 0,
-        http: location.protocol !== 'https:',
-        ssl: location.protocol === 'https:',
-        nacl: location.search.indexOf('nacl=0') == -1,
-        webcrypto: location.search.indexOf('webcrypto=0') == -1,
-        memory_only: false,
-        allow_tmpfs: location.search.indexOf('tmpfs=yeahImSureIknowWhatImDoing') > 0 || false,
-    }
+    debugMode: _DEBUG_,
 };
-
