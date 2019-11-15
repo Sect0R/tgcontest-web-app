@@ -9,6 +9,20 @@
     &:last-child {
       padding-bottom: 0;
     }
+    &_online {
+      .list__avatar::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: #0ac630;
+        border: 2px solid #fff;
+        position: absolute;
+        right: 2px;
+        bottom: 0;
+        border-radius: 50%;
+      }
+    }
     &_separator {
       padding: 0;
       margin: 6px 0;
@@ -19,6 +33,11 @@
     }
     &_pinned {
       order: -1;
+    }
+    &.active {
+      .list__link {
+        background-color: #f4f4f5;
+      }
     }
   }
   &__link {
@@ -38,6 +57,18 @@
       color: #7b7f83;
       /* hotfix for 2check icon pixel perfect */
       margin-left: -2px;
+    }
+  }
+  &__avatar {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align:middle;
+    position: relative;
+    img {
+      border-radius: 50%;
+      overflow: hidden;
+      height: 54px;
+      width: 54px;
     }
   }
 }
