@@ -24,6 +24,7 @@ body {
   padding: 20px;
   background-color: $color-light;
   border-radius: $border-radius;
+  filter: drop-shadow(0px 1px 1px rgba(16,35,47,0.15));
   width: 240px;
   //z-index: $zindex-modal;
   &__header {
@@ -51,6 +52,6 @@ body {
   }
   &_dropdown {
     position: absolute;
-    //z-index: $zindex-dropdown;
+    z-index: $zindex-dropdown;
   }
 }

@@ -22,9 +22,9 @@
         </div>-->
         <aside class="sidebar"><!--style="padding-top: 42px"-->
 
-<!--            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>-->
+<!--            <div class="lds-ring lds-ring_centered"><div></div><div></div><div></div><div></div></div>-->
 
-            <div class="w-100" style="padding: 5px 12px;box-sizing: border-box;display: flex;align-items: center;">
+            <div style="padding: 5px 12px;box-sizing: border-box;display: flex;align-items: center;">
                 <div style="display: inline-block;">
                     <!-- todo: ?? need to margin-top: -1px for pixel perfect-->
                     <div onclick="document.querySelector('.js-menu-toggle').classList.toggle('open')" class="icon svg-icon svg-icon_menu" style="margin-top: -1px;"></div>
@@ -46,9 +46,7 @@
                 <!-- todo: 1px diff =( separator, warning / text / 2checks-->
                 <input type="search" placeholder="Search" style="display: block;width: 100%;margin: 3px 8px 3px 14px;padding: 12px 16px 13px 42px; border-radius: 22px;color:#8d969c;background: #f4f4f5 url('/img/icons/search_svg.svg') 12px center no-repeat;border: 1px solid #f4f4f5;font-size: 15px;">
             </div>
-            <!-- todo: w-100 and .aside justify-content conflict-->
-            <!--todo: online indicator / check mark / pinned icon-->
-            <ul class="list w-100">
+            <ul class="list">
                 <li class="list__item list__item_system"><!--order here-->
                     <div class="alert alert_warning">
                         <div class="lds-ring lds-ring_dark lds-ring_small" style="margin: 7px 30px 7px 7px;"><div></div><div></div><div></div><div></div></div>
@@ -208,7 +206,7 @@
             </div>
         </main>
         <aside class="sidebar js-sidebar-toggle">
-            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <div class="lds-ring lds-ring_centered"><div></div><div></div><div></div><div></div></div>
         </aside>
     </div>
     <script>

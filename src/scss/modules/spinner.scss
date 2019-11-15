@@ -1,9 +1,13 @@
 .lds-ring {
-  align-self: center;
   display: inline-block;
-  position: relative;
   width: $spinner-size;
   height: $spinner-size;
+  position: relative;
+  &_centered {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+  }
   div {
     box-sizing: border-box;
     display: block;

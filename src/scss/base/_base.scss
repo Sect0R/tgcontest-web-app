@@ -24,9 +24,6 @@ html {
     margin-right: 15px;
   }
 }
-.w-100 {
-  width: 100%;
-}
 .text {
   &-bold {
     font-weight: bold;
@@ -60,7 +57,6 @@ html {
   background: $color-light;
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex-basis: 25%;
   /* todo: not empty sidebar toggling bug fix */
   overflow: hidden;
