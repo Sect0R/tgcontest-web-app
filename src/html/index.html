@@ -180,7 +180,30 @@
                     <div onclick="document.querySelector('.js-sidebar-toggle').classList.toggle('open')" class="icon icon-more">&vellip;</div>
                 </div>
             </div>
-            <div class="chat">
+            <div class="chat chat_closet">
+                <article class="chat__placeholder">
+                    <div>
+                        <picture>
+                            <source type="image/png" srcset="/img/icons/chatsplaceholder_1x.png 1x, /img/icons/chatsplaceholder_2x.png 2x, /img/icons/chatsplaceholder_3x.png 3x">
+                            <img src="/img/icons/chatplaceholder_svg.svg" alt="chat placeholder">
+                        </picture>
+                    </div>
+                    <div style="font-size: 24px;color: #000;margin: 25px 0 45px;line-height: 2rem;">Open Chat <br> or create a new one</div>
+                    <div>
+                        <div style="text-align: center;display: inline-block;margin: 0 30px;">
+                            <div class="svg-icon svg-icon_large svg-icon_new-private" style=""></div>
+                            <div style="text-transform: capitalize;margin-top:5px;font-size:14px;">private</div>
+                        </div>
+                        <div style="text-align: center;display: inline-block;margin: 0 30px;">
+                            <div class="svg-icon svg-icon_large svg-icon_new-group"></div>
+                            <div style="text-transform: capitalize;margin-top:5px;font-size:14px;">group</div>
+                        </div>
+                        <div style="text-align: center;display: inline-block;margin: 0 30px;">
+                            <div class="svg-icon svg-icon_large svg-icon_new-channel"></div>
+                            <div style="text-transform: capitalize;margin-top:5px;font-size:14px;">channel</div>
+                        </div>
+                    </div>
+                </article>
                 <article class="message-list">
                     <div class="message-row">
                         <div class="message-container">

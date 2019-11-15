@@ -10,6 +10,23 @@
       padding: 0;
     }
   }
+  &_large {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: $color-light;
+  }
+  &_new {
+    &-private {
+      background-image: url('/img/icons/newprivate_1x.png');
+    }
+    &-group {
+      background-image: url('/img/icons/newgroup_1x.png');
+    }
+    &-channel {
+      background-image: url('/img/icons/newchannel_1x.png');
+    }
+  }
 }
 
 body {
@@ -24,6 +41,20 @@ body {
       &_pinned {
         background-image: url('/img/icons/pinnedchat_2x.png');
       }
+      &_new {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        &-private {
+          background-image: url('/img/icons/newprivate_2x.png');
+        }
+        &-group {
+          background-image: url('/img/icons/newgroup_2x.png');
+        }
+        &-channel {
+          background-image: url('/img/icons/newchannel_2x.png');
+        }
+      }
     }
   }
   &.is_3x {
@@ -33,6 +64,17 @@ body {
       }
       &_pinned {
         background-image: url('/img/icons/pinnedchat_3x.png');
+      }
+      &_new {
+        &-private {
+          background-image: url('/img/icons/newprivate_3x.png');
+        }
+        &-group {
+          background-image: url('/img/icons/newgroup_3x.png');
+        }
+        &-channel {
+          background-image: url('/img/icons/newchannel_3x.png');
+        }
       }
     }
   }

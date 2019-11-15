@@ -4,6 +4,21 @@
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
+  &__placeholder {
+    display: none;
+    margin-top: -80px;
+  }
+  &_closet {
+    align-items: center;
+    justify-content: center;
+    .message-list {
+      display: none;
+    }
+    .chat__placeholder {
+      display: block;
+      text-align: center;
+    }
+  }
 }
 .message {
   &-container {
