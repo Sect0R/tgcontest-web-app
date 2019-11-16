@@ -1,4 +1,5 @@
 .svg-icon {
+  /*todo: replace _menu modificator by element (_ to __)*/
   background-repeat: no-repeat;
   background-position: center;
   &_menu {
@@ -26,6 +27,15 @@
     &-channel {
       background-image: url('/img/icons/newchannel_1x.png');
     }
+  }
+  &__smile {
+    background-image: url('/img/icons/smile_1x.png');
+  }
+  &__attach {
+    background-image: url('/img/icons/attach_1x.png');
+  }
+  &__microphone {
+    background-image: url('/img/icons/microphone_1x.png');
   }
 }
 
@@ -55,6 +65,15 @@ body {
           background-image: url('/img/icons/newchannel_2x.png');
         }
       }
+      &__smile {
+        background-image: url('/img/icons/smile_2x.png');
+      }
+      &__attach {
+        background-image: url('/img/icons/attach_2x.png');
+      }
+      &__microphone {
+        background-image: url('/img/icons/microphone_2x.png');
+      }
     }
   }
   &.is_3x {
@@ -75,6 +94,15 @@ body {
         &-channel {
           background-image: url('/img/icons/newchannel_3x.png');
         }
+      }
+      &__smile {
+        background-image: url('/img/icons/smile_3x.png');
+      }
+      &__attach {
+        background-image: url('/img/icons/attach_3x.png');
+      }
+      &__microphone {
+        background-image: url('/img/icons/microphone_3x.png');
       }
     }
   }

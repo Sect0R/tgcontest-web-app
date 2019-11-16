@@ -180,7 +180,7 @@
                     <div onclick="document.querySelector('.js-sidebar-toggle').classList.toggle('open')" class="icon icon-more">&vellip;</div>
                 </div>
             </div>
-            <div class="chat chat_closet">
+            <div class="chat"><!--chat_closet-->
                 <article class="chat__placeholder">
                     <div>
                         <picture>
@@ -220,11 +220,15 @@
                         </div>
                     </div>
                 </article>
-                <div class="message-container">
-                    <div>=)</div>
-                    <!-- todo: check ie(line-height) -->
-                    <div contenteditable class="message-input"></div>
-                    <div>attach</div>
+                <!--todo: need to margin-left: 1px for pixel-perfect/ check shadow / add modals-->
+                <div class="message-container" style="display: flex; align-items: center;margin: 0 auto 20px;">
+                    <div class="message-input message-list__item" style="background: #fff; border-bottom-left-radius: 12px;">
+                        <div class="svg-icon svg-icon__smile" style="width:22px;height:22px;align-self: flex-end"></div>
+                        <!-- todo: check ie(line-height) -->
+                        <div contenteditable class="">Message</div>
+                        <div class="svg-icon svg-icon__attach" style="width:18px;height:22px;align-self: flex-end"></div>
+                    </div>
+                    <div class="svg-icon svg-icon_large svg-icon__microphone" style="display:inline-block;width: 54px;height: 54px;background-color: #4ea4f6;margin-left: 10px;filter:drop-shadow(0px 1px 1px rgba(16,35,47,0.15)); align-self: flex-end"></div>
                 </div>
             </div>
         </main>
