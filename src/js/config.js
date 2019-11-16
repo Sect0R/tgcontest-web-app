@@ -7,5 +7,16 @@ export const Config = {
             production: _APP_PROD_SERVER_,
         },
     },
-    debugMode: _DEBUG_,
+    tdweb: {
+        useTestDC: false,
+        readOnly: false,
+        logVerbosityLevel: 1,
+        jsLogVerbosityLevel: 3,
+        fastUpdating: true,
+        useDatabase: false,
+        mode: 'wasm',
+        prefix: tdlib,
+        isBackground: false,
+        wasmUrl: `b4b0d61282108a31908dd6b2dbd7067b.wasm?_sw-precache=b4b0d61282108a31908dd6b2dbd7067b`
+    },
 };
