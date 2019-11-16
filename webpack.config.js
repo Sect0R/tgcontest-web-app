@@ -18,18 +18,20 @@ module.exports = ( env, argv ) => {
     ];
 
     return ({
-        entry: [
-            './src/js/main.js',
-            './src/scss/style.scss',
-        ],
+        entry: {
+            main: './src/js/main.js',
+            login: ['./src/js/login.js', './src/scss/login.scss'],
+            app: ['./src/js/app.js', './src/scss/style.scss'],
+        },
         output: {
+            filename: '[name].js',
             path: path.resolve(__dirname, 'dist'),
         },
         optimization: {
             minimize: !isDevelopment,
             minimizer: minimizerPlugins,
         },
-        devtool: "source-map",
+        devtool: isDevelopment ? "source-map" : false,
         module: {
             rules: [
                 {
@@ -37,7 +39,9 @@ module.exports = ( env, argv ) => {
                     use: [
                         {
                             loader: 'html-loader',
-                            options: {minimize: !isDevelopment}
+                            options: {
+                                minimize: !isDevelopment
+                            }
                         }
                     ]
                 },
@@ -58,7 +62,8 @@ module.exports = ( env, argv ) => {
                                 // you can specify a publicPath here
                                 // by default it uses publicPath in webpackOptions.output
                                 // publicPath: '../',
-                                hmr: process.env.NODE_ENV === 'development',
+                                name: 'css/[name].css',
+                                hmr: isDevelopment,
                             },
                         },
                         'css-loader', 'sass-loader'],
@@ -85,8 +90,8 @@ module.exports = ( env, argv ) => {
             new webpack.DefinePlugin({
                 _APP_ID_: JSON.stringify(process.env.APP_ID),
                 _APP_HASH_: JSON.stringify(process.env.APP_HASH),
-                _APP_TEST_SERVER_: process.env.APP_TEST_SERVER,
-                _APP_PROD_SERVER_: process.env.APP_PROD_SERVER,
+                _APP_TEST_SERVER_: JSON.stringify(process.env.APP_TEST_SERVER),
+                _APP_PROD_SERVER_: JSON.stringify(process.env.APP_PROD_SERVER),
                 _APP_VERSION_: JSON.stringify(require('./package.json').version),
                 _DEBUG_: JSON.stringify(isDevelopment),
             })

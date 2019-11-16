@@ -71,3 +71,4 @@ jspm_packages/
 # System Files
 .DS_Store
 Thumbs.db
+._.DS_Store
