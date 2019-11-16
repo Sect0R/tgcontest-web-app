@@ -1,4 +1,5 @@
 import {loadJS, loadStyleSheet} from './helpers/dynLoading';
+import {telegramApi} from "./classes/telegramApi.class";
 
 const dynLoadedContent = {
     login: {
@@ -12,6 +13,9 @@ const dynLoadedContent = {
         css: './css/app.css'
     },
 };
+
+const api = new telegramApi();
+
 
 let loadedContent = dynLoadedContent.app;
 
