@@ -29,8 +29,8 @@
   }
   &-list {
     /* todo: custom cross-browser scroll https://www.npmjs.com/package/simplebar*/
-    flex-grow: 1;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
     &__item {
       display: inline-block;
       padding: 5px 8px;
@@ -38,7 +38,6 @@
       filter: drop-shadow(0px 1px 1px rgba(16,35,47,0.15));
       background-color: #eeffde;
       border-radius: 12px;
-      border-bottom-left-radius: 0;
       position: relative;
       &::before {
         content: '';
@@ -51,19 +50,24 @@
     }
   }
   &-row {
-    margin: 10px 0;
+    margin-bottom: 10px;
     /**/
     &_my {
       .message-list__item {
         background-color: #fff;
+        border-bottom-left-radius: 0;
         &::before {
           left: -6px;
           border-color: transparent #fff #fff transparent;
         }
       }
       & + & {
-        .message-list__item:before {
-          display: none;
+        margin-bottom: 5px;
+        .message-list__item {
+          border-bottom-left-radius: 12px;
+          &:before {
+            display: none;
+          }
         }
       }
 
@@ -71,14 +75,19 @@
     &_from {
       .message-list__item {
         background-color: #eeffde;
+        border-bottom-right-radius: 0;
         &::before {
           right: -6px;
-          border-color: transparent #eeffde #eeffde transparent;
+          border-color: transparent transparent #eeffde  #eeffde;
         }
       }
       & + & {
-        .message-list__item:before {
-          display: none;
+        margin: 5px 0;
+        .message-list__item {
+          border-bottom-right-radius: 12px;
+          &:before {
+            display: none;
+          }
         }
       }
     }
@@ -91,15 +100,16 @@
     align-items: center;
     box-sizing: border-box;
     padding: 16px;
+    border-bottom-right-radius: 0;
+    &::before {
+      right: -6px;
+      border-color: transparent transparent #fff  #fff;
+    }
     [contenteditable] {
-      flex-grow: 1;
-      margin: 0 18px;
       color: #a2acb4;
       font-size: 1rem;
       outline: none;/*todo: ?? not remove/  maybe change focused state*/
       line-height: 22px;
-      max-height: calc(14 * 22px);
-      overflow-y: auto;
     }
   }
 }

@@ -7,6 +7,10 @@ html {
 
   line-height: 1.5rem;
 }
+[data-simplebar] {
+  flex-grow: 1;
+  overflow-y: auto;
+}
 .color {
   &-primary {
     color: $color-primary;
