@@ -27,9 +27,6 @@
     padding: 0 15px;
     margin: 0 auto;
   }
-  &-row {
-    margin: 10px 0;
-  }
   &-list {
     /* todo: custom cross-browser scroll https://www.npmjs.com/package/simplebar*/
     flex-grow: 1;
@@ -47,14 +44,43 @@
         content: '';
         display: inline;
         position: absolute;
-        left: -6px;
         bottom: 0;
         border-width: 6px 3px;
         border-style: solid;
-        border-color: transparent #eeffde #eeffde transparent;
       }
-      &_gray {}
-      &_green {}
+    }
+  }
+  &-row {
+    margin: 10px 0;
+    /**/
+    &_my {
+      .message-list__item {
+        background-color: #fff;
+        &::before {
+          left: -6px;
+          border-color: transparent #fff #fff transparent;
+        }
+      }
+      & + & {
+        .message-list__item:before {
+          display: none;
+        }
+      }
+
+    }
+    &_from {
+      .message-list__item {
+        background-color: #eeffde;
+        &::before {
+          right: -6px;
+          border-color: transparent #eeffde #eeffde transparent;
+        }
+      }
+      & + & {
+        .message-list__item:before {
+          display: none;
+        }
+      }
     }
   }
   &-input {
