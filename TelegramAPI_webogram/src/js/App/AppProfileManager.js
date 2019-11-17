@@ -16,7 +16,7 @@ function AppProfileManagerModule(AppChatsManager, AppUsersManager, MtpApiManager
         if (chatFullPromises[id] !== undefined) {
             return chatFullPromises[id];
         }
-        console.trace(dT(), 'Get chat full', id, AppChatsManager.getChat(id));
+        console.trace(dateTime(), 'Get chat full', id, AppChatsManager.getChat(id));
         return chatFullPromises[id] = MtpApiManager.invokeApi('messages.getFullChat', {
             chat_id: AppChatsManager.getChatInput(id)
         }).then(function (result) {

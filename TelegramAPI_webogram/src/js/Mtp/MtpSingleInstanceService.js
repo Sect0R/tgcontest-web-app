@@ -29,7 +29,7 @@ function MtpSingleInstanceServiceModule(IdleManager, Storage, MtpNetworkerFactor
         if (masterInstance || deactivated) {
             return false;
         }
-        console.log(dT(), 'deactivate');
+        console.log(dateTime(), 'deactivate');
         deactivatePromise = false;
         deactivated = true;
         clearInstance();
@@ -61,7 +61,7 @@ function MtpSingleInstanceServiceModule(IdleManager, Storage, MtpNetworkerFactor
                 Storage.set({xt_instance: newInstance});
                 if (!masterInstance) {
                     MtpNetworkerFactory.startAll();
-                    console.warn(dT(), 'now master instance', newInstance);
+                    console.warn(dateTime(), 'now master instance', newInstance);
                 }
                 masterInstance = true;
                 if (deactivatePromise) {
@@ -72,7 +72,7 @@ function MtpSingleInstanceServiceModule(IdleManager, Storage, MtpNetworkerFactor
                 Storage.set({xt_idle_instance: newInstance});
                 if (masterInstance) {
                     MtpNetworkerFactory.stopAll();
-                    console.warn(dT(), 'now idle instance', newInstance);
+                    console.warn(dateTime(), 'now idle instance', newInstance);
                     if (!deactivatePromise) {
                         deactivatePromise = setTimeout(deactivateInstance, 30000);
                     }

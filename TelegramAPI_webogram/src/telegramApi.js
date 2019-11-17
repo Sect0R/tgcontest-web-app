@@ -1,14 +1,14 @@
 function TelegramApiModule(MtpApiManager, AppPeersManager, AppUsersManager, AppProfileManager, AppChatsManager, MtpNetworkerFactory, $q) {
     var options = {dcID: 2, createNetworker: true};
-    //
-    // MtpNetworkerFactory.setUpdatesProcessor(function(message) {
-    //     switch (message._) {
-    //         case 'updates':
-    //             AppChatsManager.saveApiChats(message.chats);
-    //             AppUsersManager.saveApiUsers(message.users);
-    //             break;
-    //     }
-    // });
+
+    MtpNetworkerFactory.setUpdatesProcessor(function(message) {
+        switch (message._) {
+            case 'updates':
+                AppChatsManager.saveApiChats(message.chats);
+                AppUsersManager.saveApiUsers(message.users);
+                break;
+        }
+    });
 
     return {
         checkPhone: checkPhone,
@@ -43,7 +43,7 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, AppUsersManager, AppP
         logOut: logOut,
 
         invokeApi: invokeApi,
-        dT: dT,
+        dT: dateTime,
     };
 
     /**
@@ -385,7 +385,7 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, AppUsersManager, AppP
         doc.attributes = doc.attributes || [];
         doc.size = doc.size || 0;
 
-        if (!isFunction(progress)) {
+        if (typeof progress == 'function') {
             progress = noop;
         }
 
@@ -520,7 +520,7 @@ function TelegramApiModule(MtpApiManager, AppPeersManager, AppUsersManager, AppP
             volume_id: photoSize.location.volume_id
         };
 
-        if (!isFunction(progress)) {
+        if (typeof progress == 'function') {
             progress = noop;
         }
 

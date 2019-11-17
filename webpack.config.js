@@ -90,10 +90,6 @@ module.exports = ( env, argv ) => {
                     from: './src/*.json',
                     to: './[name].[ext]'
                 },
-                {
-                    from: './src/js/tdweb',
-                    to: './[name].[ext]'
-                },
             ]),
             new webpack.DefinePlugin({
                 _APP_ID_: JSON.stringify(process.env.APP_ID),

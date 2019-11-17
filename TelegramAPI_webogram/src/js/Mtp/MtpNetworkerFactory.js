@@ -106,7 +106,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
             };
 
         if (Config.Modes.debug) {
-            console.log(dT(), 'MT call', method, params, messageID, seqNo);
+            console.log(dateTime(), 'MT call', method, params, messageID, seqNo);
         }
 
         return this.pushMessage(message, options);
@@ -127,7 +127,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
             };
 
         if (Config.Modes.debug) {
-            console.log(dT(), 'MT message', object, messageID, seqNo);
+            console.log(dateTime(), 'MT message', object, messageID, seqNo);
         }
 
         return this.pushMessage(message, options);
@@ -164,9 +164,9 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
             };
 
         if (Config.Modes.debug) {
-            console.log(dT(), 'Api call', method, params, messageID, seqNo, options);
+            console.log(dateTime(), 'Api call', method, params, messageID, seqNo, options);
         } else {
-            console.log(dT(), 'Api call', method);
+            console.log(dateTime(), 'Api call', method);
         }
 
         return this.pushMessage(message, options);
@@ -296,7 +296,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
     };
 
     MtpNetworker.prototype.checkConnection = function (event) {
-        console.log(dT(), 'Check connection', event);
+        console.log(dateTime(), 'Check connection', event);
         clearTimeout(this.checkConnectionPromise);
 
         var serializer = new TLSerialization({mtproto: true}),
@@ -314,7 +314,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
         this.sendEncryptedRequest(pingMessage, {timeout: 15000}).then(function (result) {
             self.toggleOffline(false);
         }, function () {
-            console.log(dT(), 'Delay ', self.checkConnectionPeriod * 1000);
+            console.log(dateTime(), 'Delay ', self.checkConnectionPeriod * 1000);
             self.checkConnectionPromise = setTimeout(self.checkConnection.bind(self), parseInt(self.checkConnectionPeriod * 1000));
             self.checkConnectionPeriod = Math.min(60, self.checkConnectionPeriod * 1.5);
         })
@@ -359,7 +359,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
     MtpNetworker.prototype.performSheduledRequest = function () {
         // console.log(dT(), 'sheduled', this.dcID, this.iii);
         if (this.offline || akStopped) {
-            console.log(dT(), 'Cancel sheduled');
+            console.log(dateTime(), 'Cancel sheduled');
             return false;
         }
         delete this.nextReq;
@@ -478,7 +478,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
             this.sentMessages[message.msg_id] = containerSentMessage;
 
             if (Config.Modes.debug) {
-                console.log(dT(), 'Container', innerMessages, message.msg_id, message.seq_no);
+                console.log(dateTime(), 'Container', innerMessages, message.msg_id, message.seq_no);
             }
         } else {
             if (message.noResponse) {
@@ -495,7 +495,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
             // console.log('parse for', message);
             self.parseResponse(result.data).then(function (response) {
                 if (Config.Modes.debug) {
-                    console.log(dT(), 'Server response', self.dcID, response);
+                    console.log(dateTime(), 'Server response', self.dcID, response);
                 }
 
                 self.processMessage(response.response, response.messageID, response.sessionID);
@@ -686,7 +686,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
                             try {
                                 result.body = this.fetchObject('Object', field + '[body]');
                             } catch (e) {
-                                console.error(dT(), 'parse error', e.message, e.stack);
+                                console.error(dateTime(), 'parse error', e.message, e.stack);
                                 result.body = {_: 'parse_error', error: e};
                             }
                             if (this.offset != offset + result.bytes) {
@@ -765,7 +765,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
     };
 
     MtpNetworker.prototype.reqResendMessage = function (msgID) {
-        console.log(dT(), 'Req resend', msgID);
+        console.log(dateTime(), 'Req resend', msgID);
         this.pendingResends.push(msgID);
         this.sheduleRequest(100);
     };
@@ -835,7 +835,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
                 break;
 
             case 'bad_server_salt':
-                console.log(dT(), 'Bad server salt', message);
+                console.log(dateTime(), 'Bad server salt', message);
                 var sentMessage = this.sentMessages[message.bad_msg_id];
                 if (!sentMessage || sentMessage.seq_no != message.bad_msg_seqno) {
                     console.log(message.bad_msg_id, message.bad_msg_seqno);
@@ -848,7 +848,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
                 break;
 
             case 'bad_msg_notification':
-                console.log(dT(), 'Bad msg notification', message);
+                console.log(dateTime(), 'Bad msg notification', message);
                 var sentMessage = this.sentMessages[message.bad_msg_id];
                 if (!sentMessage || sentMessage.seq_no != message.bad_msg_seqno) {
                     console.log(message.bad_msg_id, message.bad_msg_seqno);
@@ -859,7 +859,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
                     if (MtpTimeManager.applyServerTime(
                             bigStringInt(messageID).shiftRight(32).toString(10)
                         )) {
-                        console.log(dT(), 'Update session');
+                        console.log(dateTime(), 'Update session');
                         this.updateSession();
                     }
                     var badMessage = this.updateSentMessage(message.bad_msg_id);
@@ -928,14 +928,14 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
                     var deferred = sentMessage.deferred;
                     if (message.result._ == 'rpc_error') {
                         var error = this.processError(message.result);
-                        console.log(dT(), 'Rpc error', error)
+                        console.log(dateTime(), 'Rpc error', error)
                         if (deferred) {
                             deferred.reject(error)
                         }
                     } else {
                         if (deferred) {
                             if (Config.Modes.debug) {
-                                console.log(dT(), 'Rpc response', message.result);
+                                console.log(dateTime(), 'Rpc response', message.result);
                             } else {
                                 var dRes = message.result._;
                                 if (!dRes) {
@@ -945,7 +945,7 @@ function MtpNetworkerFactoryModule(MtpSecureRandom, MtpTimeManager, Storage, Cry
                                         dRes = message.result;
                                     }
                                 }
-                                console.log(dT(), 'Rpc response', dRes);
+                                console.log(dateTime(), 'Rpc response', dRes);
                             }
                             sentMessage.deferred.resolve(message.result);
                         }

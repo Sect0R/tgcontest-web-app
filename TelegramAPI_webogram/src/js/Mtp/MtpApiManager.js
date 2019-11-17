@@ -152,7 +152,7 @@ function MtpApiManagerModule(MtpSingleInstanceService, MtpNetworkerFactory, MtpA
                     deferred.resolve(result);
                 },
                 function (error) {
-                    console.error(dT(), 'Error', error.code, error.type, baseDcID, dcID);
+                    console.error(dateTime(), 'Error', error.code, error.type, baseDcID, dcID);
                     if (error.code == 401 && baseDcID == dcID) {
                         Storage.remove('dc', 'user_auth');
                         telegramMeNotify(false);

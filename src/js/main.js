@@ -5,7 +5,7 @@ const dynLoadedContent = {
     login: {
         html: 'login.html',
         js: './login.js',
-        css: './css/login.css'
+        css: './css/login.css',
     },
     app: {
         html: 'app.html',

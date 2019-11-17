@@ -1,9 +1,9 @@
-export class RsaKeysManager {
+export const RsaKeysManager = {
 
     /**
      *  Server public key, obtained from here: https://core.telegram.org/api/obtaining_api_id
      */
-    publisKeysHex = [
+    publisKeysHex: [
         {
             modulus: 'c150023e2f70db7985ded064759cfecf0af328e69a41daf4d6f01b538135a6f91f8f8b2a0ec9ba9720ce352efcf6c5680ffc424bd634864902de0b4bd6d49f4e580230e3ae97d95c8b19442b3c0a10d8f5633fecedd6926a7f6dab0ddb7d457f9ea81b8465fcd6fffeed114011df91c059caedaf97625f6c96ecc74725556934ef781d866b34f011fce4d835a090196e9a5f0e4449af7eb697ddb9076494ca5f81104a305b6dd27665722c46b60e5df680fb16b210607ef217652e60236c255f6a28315f4083a96791d7214bf64c1df4fd0db1944fb26a2a57031b32eee64ad15a8ba68885cde74a5bfc920f6abf59ba5c75506373e7130f9042da922179251f',
             exponent: '010001'
@@ -24,12 +24,12 @@ export class RsaKeysManager {
             modulus: 'BE6A71558EE577FF03023CFA17AAB4E6C86383CFF8A7AD38EDB9FAFE6F323F2D5106CBC8CAFB83B869CFFD1CCF121CD743D509E589E68765C96601E813DC5B9DFC4BE415C7A6526132D0035CA33D6D6075D4F535122A1CDFE017041F1088D1419F65C8E5490EE613E16DBF662698C0F54870F0475FA893FC41EB55B08FF1AC211BC045DED31BE27D12C96D8D3CFC6A7AE8AA50BF2EE0F30ED507CC2581E3DEC56DE94F5DC0A7ABEE0BE990B893F2887BD2C6310A1E0A9E3E38BD34FDED2541508DC102A9C9B4C95EFFD9DD2DFE96C29BE647D6C69D66CA500843CFAED6E440196F1DBE0E2E22163C61CA48C79116FA77216726749A976A1C4B0944B5121E8C01',
             exponent: '010001'
         }
-    ];
+    ],
 
-    publicKeysParsed = {};
-    prepared = false;
+    publicKeysParsed: {},
+    prepared: false,
 
-    constructor(props) {
+    init() {
         if (!this.prepared) {
             for (let i = 0; i < this.publisKeysHex.length; i++) {
                 const keyParsed = this.publisKeysHex[i];
@@ -51,7 +51,7 @@ export class RsaKeysManager {
 
             this.prepared = true;
         }
-    }
+    },
 
     selectRsaKeyByFingerPrint(fingerprints) {
         let fingerprintHex;
@@ -64,5 +64,6 @@ export class RsaKeysManager {
         }
 
         return false;
-    }
-}
+    },
+
+};

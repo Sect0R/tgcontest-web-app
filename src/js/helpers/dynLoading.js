@@ -1,11 +1,19 @@
 export const loadStyleSheet = (path, callback) => {
-    var head = document.getElementsByTagName('head')[0], // reference to document.head for appending/ removing link nodes
-        link = document.createElement('link');           // create the link node
+
+    const head = document.getElementsByTagName('head')[0];
+    const link = document.createElement('link');
+    const timeout_id = setTimeout(function () {
+        clearInterval(interval_id);
+        clearTimeout(timeout_id);
+        head.removeChild(link);
+        callback.call(window, false, link);
+    }, 15000);
+
     link.setAttribute('href', path);
     link.setAttribute('rel', 'stylesheet');
     link.setAttribute('type', 'text/css');
 
-    var sheet, cssRules;
+    let sheet, cssRules;
 
     // get the correct properties to check for depending on the browser
     if ('sheet' in link) {
@@ -16,34 +24,29 @@ export const loadStyleSheet = (path, callback) => {
         cssRules = 'rules';
     }
 
-    var interval_id = setInterval(function () {                     // start checking whether the style sheet has successfully loaded
-            try {
-                if (link[sheet] && link[sheet][cssRules].length) { // SUCCESS! our style sheet has loaded
-                    clearInterval(interval_id);                      // clear the counters
-                    clearTimeout(timeout_id);
-                    callback.call(window, true, link);           // fire the callback with success == true
-                }
-            } catch (e) {
-            } finally {
+    // start checking whether the style sheet has successfully loaded
+    const interval_id = setInterval(function () {
+        try {
+            if (link[sheet] && link[sheet][cssRules].length) {
+                // SUCCESS! our style sheet has loaded
+                clearInterval(interval_id);
+                clearTimeout(timeout_id);
+                callback.call(window, true, link);
             }
-        }, 10),                                                   // how often to check if the stylesheet is loaded
-        timeout_id = setTimeout(function () {       // start counting down till fail
-            clearInterval(interval_id);             // clear the counters
-            clearTimeout(timeout_id);
-            head.removeChild(link);                // since the style sheet didn't load, remove the link node from the DOM
-            callback.call(window, false, link); // fire the callback with success == false
-        }, 15000);                                 // how long to wait before failing
+        } catch (e) {
+        }
+    }, 10);
 
-    head.appendChild(link);  // insert the link node into the DOM and start loading the style sheet
+    // insert the link node into the DOM and start loading the style sheet
+    head.appendChild(link);
 
-    return link; // return the link node;
+    return link;
 };
 
-export const loadJS = (url, callback) =>
-{
+export const loadJS = (url, callback) => {
     var e = document.createElement("script");
     e.src = url;
-    e.type="text/javascript";
+    e.type = "text/javascript";
     e.addEventListener('load', callback);
     document.getElementsByTagName("head")[0].appendChild(e);
 };
