@@ -1,5 +1,5 @@
 import {loadJS, loadStyleSheet} from './helpers/dynLoading';
-import {telegramApi} from "./classes/telegramApi.class";
+import {telegramApi} from "./libs/telegramApi";
 
 const dynLoadedContent = {
     login: {
@@ -14,7 +14,7 @@ const dynLoadedContent = {
     },
 };
 
-const api = new telegramApi();
+// const api = new telegramApi();
 
 
 let loadedContent = dynLoadedContent.app;
@@ -27,11 +27,16 @@ const request = new XMLHttpRequest();
 
 request.open('GET', loadedContent.html, true);
 
-request.onload = function() {
+request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
         loadStyleSheet(loadedContent.css, () => {
+            document.querySelector('body').innerHTML = request.responseText;
+
             loadJS(loadedContent.js, () => {
-                document.querySelector('body').innerHTML = request.responseText;
+                const DOMContentLoaded_event = document.createEvent("Event");
+                DOMContentLoaded_event.initEvent("DOMContentLoaded", true, true);
+
+                window.document.dispatchEvent(DOMContentLoaded_event);
             });
         });
     }
