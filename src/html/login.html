@@ -1,10 +1,38 @@
-<div id="imported-content">
-
-<input type="text" id="phone" placeholder="phone number">
-<button id="getCode">Get Code</button>
-<br />
-<input type="text" id='code'placeholder="enter code from sms" />
-<button id='signIn'>Sign In</button>
-<script src="./login.js"></script>
-
+<div id="imported-content" style="display: flex;align-items: center;justify-content: center; min-height:100vh;">
+    <div style="text-align: center;transform: translateY(-120px)"><!--transform: translateY(-120px);-->
+        <picture style="display:inline-block;margin-bottom: 25px; width: 160px;">
+            <!--        <source srcset="big-2x.jpg 1x, big-2x.jpg 2x, big-3x.jpg 3x" type="image/jpeg" />-->
+            <img src="/img/icons/icon192.png" alt="Telegram" />
+        </picture>
+        <div style="font-size: 32px;margin: 25px 0">Sign in to Telegram</div>
+        <div style="margin: 18px 0;color: #707579;">Please confirm your country and <br> enter your phone number</div>
+        <div style="margin: 25px 0">
+            <div class="form-control form-control_select">
+                <input type="text" placeholder="Country" id="country" class="input" autocomplete="off" required onfocus="document.querySelector('.js-menu-toggle').classList.add('open')"><!--onblur="document.querySelector('.js-menu-toggle').classList.remove('open')"-->
+                <div class="svg-icon svg-icon__down arrow" onclick="document.querySelector('.js-menu-toggle').classList.toggle('open')"></div>
+            </div>
+            <div class="modal modal_dropdown js-menu-toggle" style="margin-top:8px;padding: 0;width: 100%;">
+                <div class="modal__body" style="max-height: 375px;overflow-y: auto;" data-simplebar>
+                    <ul class="countries"></ul>
+                </div>
+            </div>
+        </div>
+        <div style="margin: 25px 0">
+            <div class="form-control">
+                <input type="tel" placeholder="Phone Number" id="phone" class="input" required autocomplete="off">
+            </div>
+        </div>
+        <div style="margin: 25px 0">
+            <div class="form-control" style="text-align: left">
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input" checked>
+                    <span class="checkbox__custom"></span>
+                    <span class="checkbox__text">Keep me signed in</span>
+                </label>
+            </div>
+        </div>
+        <div style="margin: 25px 0">
+            <button type="button" class="button">Next</button>
+        </div>
+    </div>
 </div>

@@ -37,6 +37,9 @@
   &__microphone {
     background-image: url('/img/icons/microphone_1x.png');
   }
+  &__down {
+    background-image: url('/img/icons/down_1x.png');
+  }
 }
 
 body {
@@ -74,6 +77,9 @@ body {
       &__microphone {
         background-image: url('/img/icons/microphone_2x.png');
       }
+      &__down {
+        background-image: url('/img/icons/down_2x.png');
+      }
     }
   }
   &.is_3x {
@@ -103,6 +109,9 @@ body {
       }
       &__microphone {
         background-image: url('/img/icons/microphone_3x.png');
+      }
+      &__down {
+        background-image: url('/img/icons/down_3x.png');
       }
     }
   }
