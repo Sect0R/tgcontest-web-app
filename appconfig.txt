@@ -1,6 +1,6 @@
 App configuration
 App api_id: 1046602
-App api_hash: ***REMOVED***
+App api_hash: (in local .env, not committed)
 App title: Telegram Web by Sect0R
 Short name: webapp
 
