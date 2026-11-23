@@ -42,8 +42,11 @@ src/js            entry points, helpers, tdweb config
 src/scss          styles
 src/js/tdweb      prebuilt tdweb worker and wasm files
 dist/img, dist/fonts   static assets (icons, fonts)
+TelegramAPI_webogram/ vendored reference copy of a webogram-based
+                  Telegram API wrapper, unused by the build
 ```
 
 ## License
 
-MIT
+MIT, except `TelegramAPI_webogram/`, which is a vendored copy of a
+webogram-based library licensed under GPL-3.0.
